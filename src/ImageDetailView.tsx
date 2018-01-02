@@ -17,7 +17,7 @@ export class ImageDetailView extends React.Component<ISearchProps, any>{
         return (<Modal open={img != null} onClose={this.close.bind(this)} closeOnEscape={true} closeOnRootNodeClick={true}>
             <Modal.Header>{img.title}</Modal.Header>
             <Modal.Content image>
-                <Image wrapped size='massive' src={img.thumbnailUrl} />
+                <Image src={img.thumbnailUrl} />
                 <Modal.Description>
                     <div className="content">
                         {tags}
