@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": false,
+    "moduleResolution":"node",
+    "strictNullChecks": true,
+    "jsx": "react",
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules",
+    "static"
+  ]
+}
