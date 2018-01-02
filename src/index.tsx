@@ -14,8 +14,8 @@ import * as moment from 'moment'
 
 mobx.useStrict(true)
 
-//TODO: Comments, single search in flight
 
+/** This is the primary Mobx store. Responsible for the state of a search (of which there can only be one) */
 class SearchStore {
     @observable results : IImageProps[] = [];
     @observable selectedImage : IImageProps | null;
@@ -36,6 +36,7 @@ class SearchStore {
         }));
     }
 
+    /** Search for the provided terms, cancels any previous in-progress search */
     public search(searchString:string){
         console.log("Searching:" + searchString);
         this.requests.next(searchString)
@@ -97,7 +98,6 @@ class RootView extends React.Component {
 @observer
 class SearchBoxView extends React.Component<ISearchProps, any> {
 
-
     render() {
         return (
             <div>
@@ -131,7 +131,6 @@ class SearchBoxView extends React.Component<ISearchProps, any> {
 @observer
 class SearchResultsView extends React.Component<ISearchProps, any>{
 
-
     render() {
         var cards = this.props.searchStore.results.map((img: IImageProps) => {
             return  (<Image src={img.thumbnailUrl} key={img.thumbnailUrl} onClick={() => this.handleClick(img)} />);
@@ -152,8 +151,6 @@ class SearchResultsView extends React.Component<ISearchProps, any>{
          console.log("Selected image " + img.thumbnailUrl);
          this.props.searchStore.selectedImage = img;
      }
-
-    
 }
 
 interface IImageProps {
